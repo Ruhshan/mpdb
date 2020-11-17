@@ -7,7 +7,7 @@
 
       <div class="carousel-inner" role="listbox">
 
-        <div class="carousel-item active" v-bind:style="{ backgroundImage: 'url('+require('../assets/img/slide/slide-1.png')+')'}">
+        <div class="carousel-item active" style="background-image:  url('https://i.postimg.cc/Qdh6SN9g/slide-1.png')">
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Welcome to <span>MPDB 2.0</span></h2>
@@ -18,7 +18,7 @@
         </div>
 
         <!-- Slide 2 -->
-        <div class="carousel-item" v-bind:style="{ backgroundImage: 'url('+require('../assets/img/slide/slide-2.jpg')+')'}">
+        <div class="carousel-item" style="background-image: url('https://i.postimg.cc/VNjkwRLP/slide-2.png')">
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Know medicinal pant</h2>
