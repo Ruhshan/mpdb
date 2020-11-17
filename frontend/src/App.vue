@@ -1,19 +1,20 @@
 <template>
 	<div id="app">
 		<top-nav></top-nav>
-
+		<main id="main">
 		<router-view></router-view>
-
-		<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+		</main>
+		<footer-section></footer-section>
 	</div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import TopNav from "@/components/TopNav.vue";
+import FooterSection from "@/components/FooterSection.vue";
 
 @Component({
-	components: { TopNav }
+	components: { TopNav, FooterSection }
 })
 export default class App extends Vue {}
 </script>
