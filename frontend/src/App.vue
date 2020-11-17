@@ -3,6 +3,8 @@
 		<top-nav></top-nav>
 
 		<router-view></router-view>
+
+		<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 	</div>
 </template>
 
