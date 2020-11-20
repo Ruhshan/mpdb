@@ -2,6 +2,7 @@ from pydantic import BaseModel
 
 
 class Plant(BaseModel):
+    id: int
     scientificName: str
     familyName: str
     localName: str

@@ -16,7 +16,12 @@ class ElasticService:
         if res["timed_out"]:
             raise HTTPException(status_code=408, detail="Request timed out")
         hits = res['hits']['total']['value']
-        plants = [hit["_source"] for hit in res['hits']['hits']]
+        #plants = [hit["_source"] for hit in res['hits']['hits']]
+        plants=[]
+        for hit in res["hits"]["hits"]:
+            plant = hit["_source"]
+            plant["id"] = hit["_id"]
+            plants.append(plant)
         return SearchResult(**{"hits": hits, "plants": plants})
 
 
