@@ -10,14 +10,14 @@ class ElasticService:
 
     def search(self) -> SearchResult:
         res = self.es.search(index=self.index, body={"query":{"match_all":{}}})
-        return self.formatResult(res)
+        return self.__format_result(res)
 
-    def formatResult(self, res):
+    def __format_result(self, res) -> SearchResult:
         if res["timed_out"]:
             raise HTTPException(status_code=408, detail="Request timed out")
         hits = res['hits']['total']['value']
         plants = [hit["_source"] for hit in res['hits']['hits']]
-        sr = SearchResult(**{"hits": hits, "plants": plants})
-        return sr
+        return SearchResult(**{"hits": hits, "plants": plants})
+
 
 
