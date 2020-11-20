@@ -1,21 +1,58 @@
 <template>
-	<div class="container">
+	<div>
 		<div style="padding-left: 10px; padding-right: 10px">
-			<div class="d-sm-flex align-items-center justify-content-between mb-4">
-				<div class="pull-left">
-					<a href="/catalogue/product/create" class="btn btn-primary">Create</a>
+			<div class="d-lg-flex align-items-center justify-content-between mb-4">
+				<div class="input-group w-50">
+					<input type="text" class="form-control" placeholder="Search...." />
+					<div class="input-group-append">
+						<button type="button" class="btn btn-outline-secondary">X</button>
+						<button
+							type="button"
+							class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+							data-toggle="dropdown"
+							aria-haspopup="true"
+							aria-expanded="false"
+						>
+							<span class="sr-only">Toggle Dropdown</span>
+						</button>
+						<div class="dropdown-menu">
+							<input
+								type="text"
+								class="dropdown-item"
+								placeholder="Enter Scientific name"
+							/>
+							<div role="separator" class="dropdown-divider"></div>
+							<input type="text" class="dropdown-item" placeholder="Enter Family" />
+							<div role="separator" class="dropdown-divider"></div>
+							<input
+								type="text"
+								class="dropdown-item"
+								placeholder="Enter Local Name"
+							/>
+							<div role="separator" class="dropdown-divider"></div>
+							<input
+								type="text"
+								class="dropdown-item"
+								placeholder="Enter Utilized Part"
+							/>
+							<div role="separator" class="dropdown-divider"></div>
+							<input type="text" class="dropdown-item" placeholder="Enter Ailment" />
+							<div role="separator" class="dropdown-divider"></div>
+							<input
+								type="text"
+								class="dropdown-item"
+								placeholder="Enter Active Compound"
+							/>
+							<div role="separator" class="dropdown-divider"></div>
+							<input type="text" class="dropdown-item" placeholder="Enter PMID" />
+							<div role="separator" class="dropdown-divider"></div>
+							<button class="btn btn-success">Search</button>
+						</div>
+					</div>
 				</div>
-				<form class="form form-inline pull-right" action="/catalogue/product/list">
-					<input
-						type="text"
-						name="q"
-						class="form-control"
-						placeholder="search"
-						value=""
-					/>
-					<button class="btn btn-search btn-info">Search</button>
-					<a href="/catalogue/product/list" class="btn btn-danger">Clear</a>
-				</form>
+				<div class="pull-right">
+					<a href="#" class="btn btn-dark">Download</a>
+				</div>
 			</div>
 
 			<div class="table-responsive">
@@ -24,46 +61,46 @@
 					style="background-color: white"
 				>
 					<thead>
-						<th>
+						<th class="table-header">
 							#
 						</th>
-						<th>
+						<th class="table-header">
 							Scientific Name
 						</th>
-						<th>
+						<th class="table-header">
 							Family
 						</th>
-						<th>
+						<th class="table-header">
 							Local Name
 						</th>
-						<th>
+						<th class="table-header">
 							Utilized part
 						</th>
-						<th>
+						<th class="table-header">
 							Ailment
 						</th>
-						<th>
+						<th class="table-header">
 							Active Compound
 						</th>
-						<th>
+						<th class="table-header">
 							PMID
 						</th>
 					</thead>
 					<tbody>
 						<tr v-for="plant in plants" v-bind:key="plant.id">
-							<td>{{ plant.id }}</td>
-							<td>{{ plant.scientificName }}</td>
-							<td>{{ plant.familyName }}</td>
-							<td>{{ plant.localName }}</td>
-							<td>{{ plant.utilizedPart }}</td>
-							<td>{{ plant.ailment }}</td>
-							<td>{{ plant.activeCompound }}</td>
-							<td>{{ plant.pmid }}</td>
+							<td class="table-cell">{{ plant.id }}</td>
+							<td class="table-cell">{{ plant.scientificName }}</td>
+							<td class="table-cell">{{ plant.familyName }}</td>
+							<td class="table-cell">{{ plant.localName }}</td>
+							<td class="table-cell">{{ plant.utilizedPart }}</td>
+							<td class="table-cell">{{ plant.ailment }}</td>
+							<td class="table-cell">{{ plant.activeCompound }}</td>
+							<td class="table-cell">{{ plant.pmid }}</td>
 						</tr>
 					</tbody>
 				</table>
 
-				<ul class="pagination pagination-small">
+				<ul class="pagination pagination-small" style="padding-left: 2px">
 					<li class="prev disabled">
 						<a class="page-link" href="">
 							Prev
@@ -154,4 +191,44 @@ export default class SearchTable extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.page-item.active .page-link {
+	z-index: 3;
+	color: #fff;
+	background-color: #5cb874 /*#007bff*/;
+	border-color: #5cb874 /*#007bff*/;
+}
+
+.page-link {
+	position: relative;
+	display: block;
+	padding: 0.5rem 0.75rem;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #5cb874;
+	/*color: #007bff;*/
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	border-top-color: rgb(222, 226, 230);
+	border-right-color: rgb(222, 226, 230);
+	border-bottom-color: rgb(222, 226, 230);
+	border-left-color: rgb(222, 226, 230);
+}
+
+.page-link:hover {
+	z-index: 2;
+	color: #48a35e;
+	/*color: #0056b3;*/
+	text-decoration: none;
+	background-color: #e9efeb;
+	border-color: #dee6df;
+}
+
+.table-cell {
+	font-size: 12px;
+}
+
+.table-header {
+	font-size: 12px;
+}
+</style>
