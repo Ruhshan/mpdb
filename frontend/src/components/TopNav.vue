@@ -25,9 +25,9 @@
 
 				<nav class="nav-menu d-none d-lg-block">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><router-link to="/">Home</router-link></li>
 						<li><a href="#">About</a></li>
-						<li><a href="#">Search</a></li>
+						<li><router-link to="/search">Search</router-link></li>
 						<li><a href="#">FAQ</a></li>
 						<li><a href="#">Team</a></li>
 						<li><a href="#">Publications</a></li>
