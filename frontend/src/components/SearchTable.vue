@@ -112,19 +112,19 @@
                     <div>
                         <ul class="pagination pagination-small" style="padding-left: 2px">
                             <li class="prev disabled">
-                                <a class="page-link" href="">
+                                <button class="page-link" @click="setPrevPageRange( pages[0] )">
                                     Prev
-                                </a>
+                                </button>
                             </li>
 
-                            <li v-for="p in pages()" class="page-item" v-bind:class="{ active: isPageActive(p) }" v-bind:key="p">
-                                <a class="page-link" href="">{{ p }}</a>
+                            <li v-for="p in pages" class="page-item" v-bind:class="{ active: isPageActive(p) }" v-bind:key="p">
+                                <button class="page-link" @click="setActivePage(p)">{{ p }}</button>
                             </li>
 
                             <li class="next ">
-                                <a class="page-link" href="?page=2">
+                                <button class="page-link" @click="setNextPageRange( pages[pages.length - 1 ] )">
                                     Next
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -134,12 +134,11 @@
                             <option value=10>10 items per page</option>
                             <option value=20>20 items per page</option>
                             <option value=40>40 items per page</option>
-                            <option value=60>50 items per page</option>
+                            <option value=60>60 items per page</option>
                         </select>
                     </div>
 
-                    <div>
-                        Showing 1 to 10 of {{ hits }} items
+                    <div v-html="getDesc()">
                     </div>
                 </div>
             </div>
@@ -156,7 +155,7 @@
     export default class SearchTable extends Vue {
         tableParams = new TableParams("",
             new Fields("", "", "", "", "", ""),
-            20,
+            10,
             1
         );
         plants = [
@@ -216,18 +215,44 @@
                 pmid: "24190493"
             }
         ];
-        hits= 100;
-
+        hits= 500;
+        pages= [1,2,3];
+        created(){
+            this.pages = this.getWholePageRange().slice(0,10);
+        }
         search() {
             console.log(JSON.stringify(this.tableParams))
         }
-        pages(){
-            const end = Math.ceil(this.hits /this.tableParams.itemsPerPage);
-            return  Array.from({length: (end - 1)}, (v, k) => k + 1);
 
-        }
         isPageActive(pageNumber: number){
             return pageNumber === this.tableParams.activePage;
+        }
+        getDesc(){
+            const from: number = (this.tableParams.itemsPerPage * (this.tableParams.activePage -1) );
+            const to: number = from + Number(this.tableParams.itemsPerPage);
+            return `Showing ${ from + 1 } to ${ to }  of ${ this.hits } items`;
+        }
+        setActivePage(p: number){
+            this.tableParams.activePage = p;
+        }
+        setNextPageRange(currentLast: number){
+
+            const range =  this.getWholePageRange().slice(currentLast, currentLast+10);
+            console.log(range)
+            if(range.length > 1){
+                this.pages = range;
+            }
+        }
+        getWholePageRange(){
+            const end = Math.ceil(this.hits /this.tableParams.itemsPerPage);
+            return Array.from({length: (end)}, (v, k) => k + 1);
+        }
+        setPrevPageRange(currentFirst: number){
+            console.log(currentFirst)
+            if(currentFirst>10){
+                this.pages = this.getWholePageRange().slice(currentFirst-10 -1, currentFirst-1);
+            }
+
         }
     }
 </script>
