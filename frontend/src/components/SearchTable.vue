@@ -117,13 +117,9 @@
                                 </a>
                             </li>
 
-                            <li class="page-item active"><a class="page-link" href="">1</a></li>
-
-                            <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
-
-                            <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
-
-                            <li class="page-item"><a class="page-link" href="?page=4">4</a></li>
+                            <li v-for="p in pages()" class="page-item" v-bind:class="{ active: isPageActive(p) }" v-bind:key="p">
+                                <a class="page-link" href="">{{ p }}</a>
+                            </li>
 
                             <li class="next ">
                                 <a class="page-link" href="?page=2">
@@ -143,7 +139,7 @@
                     </div>
 
                     <div>
-                        Showing 1 to 10 of 100 items
+                        Showing 1 to 10 of {{ hits }} items
                     </div>
                 </div>
             </div>
@@ -220,9 +216,18 @@
                 pmid: "24190493"
             }
         ];
+        hits= 100;
 
         search() {
             console.log(JSON.stringify(this.tableParams))
+        }
+        pages(){
+            const end = Math.ceil(this.hits /this.tableParams.itemsPerPage);
+            return  Array.from({length: (end - 1)}, (v, k) => k + 1);
+
+        }
+        isPageActive(pageNumber: number){
+            return pageNumber === this.tableParams.activePage;
         }
     }
 </script>
