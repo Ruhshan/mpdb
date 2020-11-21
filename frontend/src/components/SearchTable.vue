@@ -21,18 +21,18 @@
                                     type="text"
                                     class="dropdown-item"
                                     placeholder="Enter Scientific name"
-                                    v-model="tableParams.fields.scientificName"
+                                    v-model="tableParams.searchFields.scientificName"
                             />
                             <div role="separator" class="dropdown-divider"></div>
                             <input type="text" class="dropdown-item" placeholder="Enter Family"
-                                   v-model="tableParams.fields.familyName"
+                                   v-model="tableParams.searchFields.familyName"
                             />
                             <div role="separator" class="dropdown-divider"></div>
                             <input
                                     type="text"
                                     class="dropdown-item"
                                     placeholder="Enter Local Name"
-                                    v-model="tableParams.fields.localName"
+                                    v-model="tableParams.searchFields.localName"
                             />
                             <div role="separator" class="dropdown-divider"></div>
                             <input
@@ -42,17 +42,17 @@
                             />
                             <div role="separator" class="dropdown-divider"></div>
                             <input type="text" class="dropdown-item" placeholder="Enter Ailment"
-                                   v-model="tableParams.fields.ailment"/>
+                                   v-model="tableParams.searchFields.ailment"/>
                             <div role="separator" class="dropdown-divider"></div>
                             <input
                                     type="text"
                                     class="dropdown-item"
                                     placeholder="Enter Active Compound"
-                                    v-model="tableParams.fields.activeCompound"
+                                    v-model="tableParams.searchFields.activeCompound"
                             />
                             <div role="separator" class="dropdown-divider"></div>
                             <input type="text" class="dropdown-item" placeholder="Enter PMID"
-                                   v-model="tableParams.fields.pmid"/>
+                                   v-model="tableParams.searchFields.pmid"/>
                             <div role="separator" class="dropdown-divider"></div>
                             <button class="btn btn-success" @click="search">Search</button>
                         </div>
@@ -169,7 +169,7 @@
 
         }
         search() {
-            axios.get("http://localhost:8090/api/v1/plant/query").then((res: AxiosResponse<SearchResult>)=>{
+            axios.post("http://localhost:8090/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>)=>{
                 this.hits = res.data.hits;
                 this.plants = res.data.plants;
                 this.pages = this.getWholePageRange().slice(0,10);
