@@ -10,7 +10,6 @@ service = ElasticService()
 
 
 @router.post("/query", response_model=SearchResult)
-async def query_plants(searchRequest: SearchRequest):
-    print(searchRequest)
-    return service.search()
+async def query_plants(search_request: SearchRequest):
+    return service.search(search_request)
 

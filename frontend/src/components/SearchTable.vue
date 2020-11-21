@@ -4,7 +4,7 @@
             <div class="d-lg-flex align-items-center justify-content-between mb-4">
                 <div class="input-group w-50">
                     <input type="text" class="form-control" placeholder="Search...."
-                           v-model="tableParams.globalSearch"/>
+                           v-model="tableParams.globalSearch" v-on:keyup.enter="search"/>
                     <div class="input-group-append">
                         <button type="button" class="btn btn-outline-secondary">X</button>
                         <button
@@ -186,6 +186,7 @@
         }
         setActivePage(p: number){
             this.tableParams.activePage = p;
+            this.search();
         }
         setNextPageRange(currentLast: number){
 
@@ -204,8 +205,8 @@
             if(currentFirst>10){
                 this.pages = this.getWholePageRange().slice(currentFirst-10 -1, currentFirst-1);
             }
-
         }
+
     }
 </script>
 

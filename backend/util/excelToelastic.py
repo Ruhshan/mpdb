@@ -21,6 +21,7 @@ def read_excel(path):
     for r in range(2, ws.max_row):
         row = {}
         if ws["A{}".format(r)].value is not None:
+            row["pid"] = r-1
             row["scientificName"] = read_cell(ws, "A{}".format(r))
             row["familyName"] = read_cell(ws, "B{}".format(r))
             row["localName"] = read_cell(ws, "C{}".format(r))
@@ -39,3 +40,6 @@ def read_excel(path):
 
 if __name__ == "__main__":
     read_excel("/Users/ruhshan/Desktop/mpdb_files/short.xlsx")
+
+
+
