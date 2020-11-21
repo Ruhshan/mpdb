@@ -150,6 +150,9 @@
     import {Component, Vue} from "vue-property-decorator";
     import Fields from "@/entity/Fields";
     import TableParams from "@/entity/TableParams";
+    import axios, {AxiosResponse} from "axios";
+    import SearchResult from "@/entity/SearchResult";
+    import Plant from '@/entity/Plant';
 
     @Component
     export default class SearchTable extends Vue {
@@ -158,70 +161,19 @@
             10,
             1
         );
-        plants = [
-            {
-                id: 1,
-                scientificName: "Andrographis paniculata (Burm. F.) Wall.  ex Nees",
-                familyName: "Acanthaceae",
-                localName: "Kalomegh",
-                utilizedPart: "Whole plant",
-                ailment: "",
-                activeCompound:
-                    "Andrographolide, Neoandrographolide, 14-Deoxyandrographolide, Isoandrographolide, Andrographiside, 14-Deoxy 11,12-Didehydroandrographolide, Andrograpanin, Andrograpidin C, Luteolin, Andrograpidin A, Apigenin, Onysilin, Echiodinin, Andrographolactone",
-                pmid: "25950015"
-            },
-            {
-                id: 2,
-                scientificName: "Justicia adhatoda L.",
-                familyName: "Acanthaceae",
-                localName: "Bashok",
-                utilizedPart: "Leaf, Bark",
-                ailment:
-                    "Coughs, chest pain, pneumonia, biliary problem (bile turns the color of blood), frequent thirsts, respiratory problems, fever, vomiting tendency, diabetes, leprosy, tuberculosis.",
-                activeCompound: "Tetracosahexaene hexamethyl",
-                pmid: "25001112"
-            },
-            {
-                id: 3,
-                scientificName: "Justicia gendarussa Burm.f.",
-                familyName: "Acanthaceae",
-                localName: "Haing kiu, Bish-katali",
-                utilizedPart: "Leaf, root, seed",
-                ailment: "Throat pain due to cold and coughs.",
-                activeCompound:
-                    "oleic acid, 9,12-octadecadienoic acid, 6,9,12-octadecatrienoic acid and estra-1,3,5 (10)-trein-17-β-ol",
-                pmid: "28539747"
-            },
-            {
-                id: 4,
-                scientificName: "Aloe vera (L.) Burm.f.",
-                familyName: "Aloaceae",
-                localName: "Ghrito-kumari",
-                utilizedPart: "Whole plant",
-                ailment: "",
-                activeCompound: "Aloin",
-                pmid: "31319122"
-            },
-            {
-                id: 5,
-                scientificName: "Achyranthes aspera L.",
-                familyName: "Amaranthaceae",
-                localName: "Apang, Ubuth nangra",
-                utilizedPart: "Leaf, root",
-                ailment:
-                    "Fever, headache, itching, and burning sensations in the body, blood toxicity, indigestion, vomiting tendency, coughs, obesity, respiratory tract disorders, piles, pain, wounds, gastrointestinal disorders (leaf). Jaundice (root).",
-                activeCompound:
-                    "quinic acid, chlorogenic acid, kaempferol, quercetin, chrysin",
-                pmid: "24190493"
-            }
-        ];
-        hits= 500;
-        pages= [1,2,3];
+        plants: Array<Plant> = [];
+        hits = 0;
+        pages: Array<number> = [];
         created(){
-            this.pages = this.getWholePageRange().slice(0,10);
+            this.search();
+
         }
         search() {
-            console.log(JSON.stringify(this.tableParams))
+            axios.get("http://localhost:8090/api/v1/plant/query").then((res: AxiosResponse<SearchResult>)=>{
+                this.hits = res.data.hits;
+                this.plants = res.data.plants;
+                this.pages = this.getWholePageRange().slice(0,10);
+            })
         }
 
         isPageActive(pageNumber: number){
