@@ -5,58 +5,6 @@
                 <div class="input-group w-50">
                     <input type="text" class="form-control" placeholder="Search...."
                            v-model="tableParams.globalSearch" v-on:keyup.enter="search"/>
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-outline-secondary">X</button>
-                        <button
-                                type="button"
-                                class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                        >
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <input
-                                    type="text"
-                                    class="dropdown-item"
-                                    placeholder="Enter Scientific name"
-                                    v-model="tableParams.searchFields.scientificName"
-                            />
-                            <div role="separator" class="dropdown-divider"></div>
-                            <input type="text" class="dropdown-item" placeholder="Enter Family"
-                                   v-model="tableParams.searchFields.familyName"
-                            />
-                            <div role="separator" class="dropdown-divider"></div>
-                            <input
-                                    type="text"
-                                    class="dropdown-item"
-                                    placeholder="Enter Local Name"
-                                    v-model="tableParams.searchFields.localName"
-                            />
-                            <div role="separator" class="dropdown-divider"></div>
-                            <input
-                                    type="text"
-                                    class="dropdown-item"
-                                    placeholder="Enter Utilized Part"
-                            />
-                            <div role="separator" class="dropdown-divider"></div>
-                            <input type="text" class="dropdown-item" placeholder="Enter Ailment"
-                                   v-model="tableParams.searchFields.ailment"/>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <input
-                                    type="text"
-                                    class="dropdown-item"
-                                    placeholder="Enter Active Compound"
-                                    v-model="tableParams.searchFields.activeCompound"
-                            />
-                            <div role="separator" class="dropdown-divider"></div>
-                            <input type="text" class="dropdown-item" placeholder="Enter PMID"
-                                   v-model="tableParams.searchFields.pmid"/>
-                            <div role="separator" class="dropdown-divider"></div>
-                            <button class="btn btn-success" @click="search">Search</button>
-                        </div>
-                    </div>
                 </div>
                 <div class="pull-right">
                     <a href="#" class="btn btn-dark">Download</a>
@@ -110,14 +58,15 @@
 
                 <div class="d-lg-flex align-items-center justify-content-between mb-4">
                     <div>
-                        <ul class="pagination pagination-small" style="padding-left: 2px">
+                        <ul class="pagination pagination-small" style="padding-left: 2px" v-if="hits>0">
                             <li class="prev disabled">
                                 <button class="page-link" @click="setPrevPageRange( pages[0] )">
                                     Prev
                                 </button>
                             </li>
 
-                            <li v-for="p in pages" class="page-item" v-bind:class="{ active: isPageActive(p) }" v-bind:key="p">
+                            <li v-for="p in pages" class="page-item" v-bind:class="{ active: isPageActive(p) }"
+                                v-bind:key="p">
                                 <button class="page-link" @click="setActivePage(p)">{{ p }}</button>
                             </li>
 
@@ -129,7 +78,7 @@
                         </ul>
                     </div>
 
-                    <div>
+                    <div v-if="hits> 0">
                         <select class="form-control" id="exampleFormControlSelect1" v-model="tableParams.itemsPerPage">
                             <option value=10>10 items per page</option>
                             <option value=20>20 items per page</option>
@@ -164,46 +113,66 @@
         plants: Array<Plant> = [];
         hits = 0;
         pages: Array<number> = [];
-        created(){
-            this.search();
+        lastQuery = "";
+
+        created() {
+            this.fetch();
 
         }
-        search() {
-            axios.post("http://localhost:8090/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>)=>{
+
+        search(){
+            if(this.tableParams.globalSearch.length>2 || this.lastQuery!== this.tableParams.globalSearch){
+                this.fetch()
+            }
+            this.lastQuery = this.tableParams.globalSearch
+        }
+
+        fetch() {
+            axios.post("http://localhost:8090/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
                 this.hits = res.data.hits;
                 this.plants = res.data.plants;
-                this.pages = this.getWholePageRange().slice(0,10);
+                this.pages = this.getWholePageRange().slice(0, 10);
             })
         }
 
-        isPageActive(pageNumber: number){
+        isPageActive(pageNumber: number) {
             return pageNumber === this.tableParams.activePage;
         }
-        getDesc(){
-            const from: number = (this.tableParams.itemsPerPage * (this.tableParams.activePage -1) );
-            const to: number = from + Number(this.tableParams.itemsPerPage);
-            return `Showing ${ from + 1 } to ${ to }  of ${ this.hits } items`;
-        }
-        setActivePage(p: number){
-            this.tableParams.activePage = p;
-            this.search();
-        }
-        setNextPageRange(currentLast: number){
 
-            const range =  this.getWholePageRange().slice(currentLast, currentLast+10);
-            console.log(range)
-            if(range.length > 1){
+        getDesc() {
+
+            if(this.hits == 0){
+                return "No match available!"
+            }
+
+            const from: number = (this.tableParams.itemsPerPage * (this.tableParams.activePage - 1));
+            const to: number = Math.min(from + Number(this.tableParams.itemsPerPage), this.hits);
+
+            return `Showing ${from + 1} to ${to}  of ${this.hits} items`;
+        }
+
+        setActivePage(p: number) {
+            this.tableParams.activePage = p;
+            this.fetch();
+        }
+
+        setNextPageRange(currentLast: number) {
+
+            const range = this.getWholePageRange().slice(currentLast, currentLast + 10);
+            if (range.length > 1) {
                 this.pages = range;
             }
         }
-        getWholePageRange(){
-            const end = Math.ceil(this.hits /this.tableParams.itemsPerPage);
+
+        getWholePageRange() {
+            const end = Math.ceil(this.hits / this.tableParams.itemsPerPage);
             return Array.from({length: (end)}, (v, k) => k + 1);
         }
-        setPrevPageRange(currentFirst: number){
+
+        setPrevPageRange(currentFirst: number) {
             console.log(currentFirst)
-            if(currentFirst>10){
-                this.pages = this.getWholePageRange().slice(currentFirst-10 -1, currentFirst-1);
+            if (currentFirst > 10) {
+                this.pages = this.getWholePageRange().slice(currentFirst - 10 - 1, currentFirst - 1);
             }
         }
 
