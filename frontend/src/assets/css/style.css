@@ -1517,3 +1517,7 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+.hl {
+	background-color: #e3f569 !important;
+}

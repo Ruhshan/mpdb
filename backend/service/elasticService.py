@@ -4,6 +4,7 @@ from fastapi import HTTPException
 from backend.schema.searchRequest import SearchRequest
 from backend.schema.searchResult import SearchResult
 
+highlight_prop = {"pre_tags" : ["<span class='hl'>"], "post_tags" : ["</span>"]}
 
 class ElasticService:
     def __init__(self):
@@ -32,13 +33,13 @@ class ElasticService:
                 "query": query,
                 "highlight": {
                     "fields": {
-                        "scientificName": {},
-                        "familyName": {},
-                        "localName": {},
-                        "utilizedPart": {},
-                        "ailment": {},
-                        "activeCompound": {},
-                        "pmid": {}
+                        "scientificName": highlight_prop,
+                        "familyName": highlight_prop,
+                        "localName": highlight_prop,
+                        "utilizedPart": highlight_prop,
+                        "ailment": highlight_prop,
+                        "activeCompound": highlight_prop,
+                        "pmid": highlight_prop
                         }
                     }
                 }

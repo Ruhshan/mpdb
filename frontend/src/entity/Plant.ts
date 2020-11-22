@@ -7,7 +7,8 @@ class Plant{
         public localName: string,
         public ailment: string,
         public activeCompound: string,
-        public pmid: string
+        public pmid: string,
+        public utilizedPart: string
     ) {}
 
 }

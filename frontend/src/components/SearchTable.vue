@@ -96,14 +96,14 @@
                     </thead>
                     <tbody>
                     <tr v-for="plant in plants" v-bind:key="plant.id">
-                        <td class="table-cell">{{ plant.id }}</td>
-                        <td class="table-cell">{{ plant.scientificName }}</td>
-                        <td class="table-cell">{{ plant.familyName }}</td>
-                        <td class="table-cell">{{ plant.localName }}</td>
-                        <td class="table-cell">{{ plant.utilizedPart }}</td>
-                        <td class="table-cell">{{ plant.ailment }}</td>
-                        <td class="table-cell">{{ plant.activeCompound }}</td>
-                        <td class="table-cell">{{ plant.pmid }}</td>
+                        <td class="table-cell" v-html="plant.id"></td>
+                        <td class="table-cell" v-html="plant.scientificName"></td>
+                        <td class="table-cell" v-html="plant.familyName"></td>
+                        <td class="table-cell" v-html="plant.localName"></td>
+                        <td class="table-cell" v-html="plant.utilizedPart"></td>
+                        <td class="table-cell" v-html="plant.ailment"></td>
+                        <td class="table-cell" v-html="plant.activeCompound"></td>
+                        <td class="table-cell" v-html="plant.pmid"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -210,4 +210,7 @@
     }
 </script>
 
-<style scoped src="../assets/css/table-styles.css"></style>
+<style scoped src="../assets/css/table-styles.css">
+
+
+</style>
