@@ -25,19 +25,41 @@ class ElasticService:
                                "ailment","activeCompound", "pmid"]
                 }}
 
-        return {"from": start_from,
+        return {
+                "from": start_from,
                 "size": search_request.itemsPerPage,
                 "sort": ["pid"],
-                "query": query}
+                "query": query,
+                "highlight": {
+                    "fields": {
+                        "scientificName": {},
+                        "familyName": {},
+                        "localName": {},
+                        "utilizedPart": {},
+                        "ailment": {},
+                        "activeCompound": {},
+                        "pmid": {}
+                        }
+                    }
+                }
 
     def __format_result(self, res) -> SearchResult:
         if res["timed_out"]:
             raise HTTPException(status_code=408, detail="Request timed out")
-        hits = res['hits']['total']['value']
-        # plants = [hit["_source"] for hit in res['hits']['hits']]
+        number_of_hits = res['hits']['total']['value']
         plants = []
         for hit in res["hits"]["hits"]:
             plant = hit["_source"]
+            hightlight = hit.get("highlight")
             plant["id"] = hit["_id"]
+            if hightlight:
+                self.__merge_highlight(plant, hightlight)
             plants.append(plant)
-        return SearchResult(**{"hits": hits, "plants": plants})
+        return SearchResult(**{"hits": number_of_hits, "plants": plants})
+
+    def __merge_highlight(self, plant, highlight):
+        for k in highlight.keys():
+            plant[k] = highlight[k][0]
+
+
+
