@@ -3,8 +3,8 @@
         <div style="padding-left: 10px; padding-right: 10px">
             <div class="d-lg-flex align-items-center justify-content-between mb-4">
                 <div class="input-group w-50">
-                    <input type="text" class="form-control" placeholder="Search...."
-                           v-model="tableParams.globalSearch" v-on:keyup.enter="search"/>
+                    <input type="text" class="form-control" placeholder="Type your keywords then press enter to seach"
+                           v-model="tableParams.globalSearch" id="idSearch" v-on:keyup.enter="search"/>
                 </div>
                 <div class="pull-right">
                     <a href="#" class="btn btn-dark">Download</a>
@@ -45,7 +45,7 @@
                     <tbody>
                     <tr v-for="plant in plants" v-bind:key="plant.id">
                         <td class="table-cell" v-html="plant.id"></td>
-                        <td class="table-cell" v-html="plant.scientificName"></td>
+                        <td class="table-cell" v-html="formatName(plant)"></td>
                         <td class="table-cell" v-html="plant.familyName"></td>
                         <td class="table-cell" v-html="plant.localName"></td>
                         <td class="table-cell" v-html="plant.utilizedPart"></td>
@@ -117,11 +117,10 @@
 
         created() {
             this.fetch();
-
         }
 
         search(){
-            if(this.tableParams.globalSearch.length>2 || this.lastQuery!== this.tableParams.globalSearch){
+            if(this.tableParams.globalSearch.length> 2 || this.lastQuery!== this.tableParams.globalSearch){
                 this.fetch()
             }
             this.lastQuery = this.tableParams.globalSearch
@@ -174,6 +173,10 @@
             if (currentFirst > 10) {
                 this.pages = this.getWholePageRange().slice(currentFirst - 10 - 1, currentFirst - 1);
             }
+        }
+
+        formatName(plant: Plant){
+            return `<em>${plant.scientificName}</em> ${plant.author}`
         }
 
     }

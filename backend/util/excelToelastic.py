@@ -22,7 +22,9 @@ def read_excel(path):
         row = {}
         if ws["A{}".format(r)].value is not None:
             row["pid"] = r-1
-            row["scientificName"] = read_cell(ws, "A{}".format(r))
+            scientific, author = split_name(read_cell(ws, "A{}".format(r)))
+            row["scientificName"] = scientific
+            row["author"] = author
             row["familyName"] = read_cell(ws, "B{}".format(r))
             row["localName"] = read_cell(ws, "C{}".format(r))
             row["utilizedPart"] = read_cell(ws, "D{}".format(r))
@@ -35,9 +37,16 @@ def read_excel(path):
                 "_source":row
             })
 
+
+
     helpers.bulk(es, actions=actions)
 
+def split_name(name):
+    splitted = name.split(" ")
+    scientific = " ".join(splitted[0:2])
+    author = " ".join(splitted[2:])
 
+    return scientific, author
 if __name__ == "__main__":
     read_excel("/Users/ruhshan/Desktop/mpdb_files/short.xlsx")
 

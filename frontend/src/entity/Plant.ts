@@ -3,6 +3,7 @@ class Plant{
     constructor(
         public id: number,
         public scientificName: string,
+        public author: string,
         public familyName: string,
         public localName: string,
         public ailment: string,

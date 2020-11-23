@@ -4,7 +4,8 @@ from fastapi import HTTPException
 from backend.schema.searchRequest import SearchRequest
 from backend.schema.searchResult import SearchResult
 
-highlight_prop = {"pre_tags" : ["<span class='hl'>"], "post_tags" : ["</span>"]}
+highlight_prop = {"pre_tags" : ["<span class='hl'>"], "post_tags" : ["</span>"],
+                  "fragment_size":400, "type":"plain"}
 
 class ElasticService:
     def __init__(self):
@@ -22,7 +23,7 @@ class ElasticService:
         if search_request.globalSearch:
             query = {"multi_match": {
                     "query": search_request.globalSearch,
-                    "fields": ["scientificName", "familyName", "localName", "utilizedPart",
+                    "fields": ["scientificName", "author","familyName", "localName", "utilizedPart",
                                "ailment","activeCompound", "pmid"]
                 }}
 
@@ -34,6 +35,7 @@ class ElasticService:
                 "highlight": {
                     "fields": {
                         "scientificName": highlight_prop,
+                        "author": highlight_prop,
                         "familyName": highlight_prop,
                         "localName": highlight_prop,
                         "utilizedPart": highlight_prop,
