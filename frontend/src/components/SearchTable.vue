@@ -6,9 +6,9 @@
                     <input type="text" class="form-control" placeholder="Type your keywords then press enter to seach"
                            v-model="tableParams.globalSearch" id="idSearch" v-on:keyup.enter="search"/>
                 </div>
-                <div class="pull-right">
-                    <a href="#" class="btn btn-dark">Download</a>
-                </div>
+<!--                <div class="pull-right">-->
+<!--                    <a href="#" class="btn btn-dark">Download</a>-->
+<!--                </div>-->
             </div>
 
             <div class="table-responsive">
@@ -51,7 +51,7 @@
                         <td class="table-cell" v-html="plant.utilizedPart"></td>
                         <td class="table-cell" v-html="plant.ailment"></td>
                         <td class="table-cell" v-html="plant.activeCompound"></td>
-                        <td class="table-cell" v-html="plant.pmid"></td>
+                        <td class="table-cell" v-html="formatPubmedUrl(plant.pmid)"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -177,6 +177,20 @@
 
         formatName(plant: Plant){
             return `<em>${plant.scientificName}</em> ${plant.author}`
+        }
+
+        formatPubmedUrl(pmid: string){
+            if(pmid.length>0){
+                if(pmid.indexOf("span")!==-1){
+                    console.log(pmid)
+                    pmid = pmid.replace("<span class='hl'>","").replace("</span>","")
+                    return `<span class="hl"><a target="_blank" style="font-weight: bold; font-size: 14px" href="https://pubmed.ncbi.nlm.nih.gov/${pmid}">${pmid}</a></span>`
+                }else{
+                    return `<a target="_blank" style="font-weight: bold; font-size: 14px" href="https://pubmed.ncbi.nlm.nih.gov/${pmid}">${pmid}</a>`
+                }
+            }else{
+                return ""
+            }
         }
 
     }
