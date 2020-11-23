@@ -4,12 +4,14 @@ from fastapi import HTTPException
 from backend.schema.searchRequest import SearchRequest
 from backend.schema.searchResult import SearchResult
 
+from decouple import config
+
 highlight_prop = {"pre_tags" : ["<span class='hl'>"], "post_tags" : ["</span>"],
                   "fragment_size":400, "type":"plain"}
 
 class ElasticService:
     def __init__(self):
-        self.es = Elasticsearch()
+        self.es = Elasticsearch([config("ELASTICSEARCH_URL")])
         self.index = "mpdb"
 
     def search(self, search_request: SearchRequest) -> SearchResult:
