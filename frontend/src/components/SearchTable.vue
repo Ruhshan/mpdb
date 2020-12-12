@@ -114,9 +114,11 @@
         hits = 0;
         pages: Array<number> = [];
         lastQuery = "";
+        baseUrl = process.env.VUE_APP_API_URL
 
         created() {
             this.fetch();
+            console.log(this.baseUrl)
         }
 
         search(){
@@ -127,7 +129,7 @@
         }
 
         fetch() {
-            axios.post("http://localhost:8090/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
+            axios.post(this.baseUrl+"/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
                 this.hits = res.data.hits;
                 this.plants = res.data.plants;
                 this.pages = this.getWholePageRange().slice(0, 10);
