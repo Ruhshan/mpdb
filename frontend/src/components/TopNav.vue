@@ -9,7 +9,6 @@
 				<nav class="nav-menu d-none d-lg-block">
 					<ul>
 						<li><router-link to="/">Home</router-link></li>
-						<li><a href="#">About</a></li>
 						<li><router-link to="/search">Search</router-link></li>
 						<li><a href="#">FAQ</a></li>
 						<li><a href="#">Team</a></li>

@@ -11,8 +11,7 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Welcome to <span>MPDB 2.0</span></h2>
-              <p class="animate__animated animate__fadeInUp"> Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <a href="#" class="btn-get-started animate__animated animate__fadeInUp scrollto">Know more</a>
+              <p class="animate__animated animate__fadeInUp">A potential phytochemical data repertoire for indigenous medicinal plants of Bangladesh</p>
             </div>
           </div>
         </div>
@@ -21,9 +20,9 @@
         <div class="carousel-item" style="background-image: url('https://i.postimg.cc/VNjkwRLP/slide-2.png')">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Know medicinal pant</h2>
-              <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <a href="#" class="btn-get-started animate__animated animate__fadeInUp scrollto">Browse</a>
+              <h2 class="animate__animated animate__fadeInDown">One destination, thousand plants</h2>
+              <p class="animate__animated animate__fadeInUp">Find the plant of your interest with its local name, scientific name, active compounds and reference article</p>
+<!--              <a href="/search" class="btn-get-started animate__animated animate__fadeInUp scrollto">Search</a>-->
             </div>
           </div>
         </div>

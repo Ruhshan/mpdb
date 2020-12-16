@@ -9,22 +9,22 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="icofont-search"></i></div>
-              <h4 class="title"><a href="">Search</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              <h4 class="title"><a href="/search">Search</a></h4>
+              <p class="description">Search using plant's name, active compounds, ailments and PMID</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="icofont-newspaper"></i></div>
               <h4 class="title"><a href="">Publication</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              <p class="description">View list of publications that referenced this database in their work</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="icofont-question-circle"></i></div>
-              <h4 class="title"><a href="">FAQ</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trade stravi</p>
+              <h4 class="title"><a href="">Guide</a></h4>
+              <p class="description">This is an easy to use database, find step by step instruction here</p>
             </div>
           </div>
         </div>
