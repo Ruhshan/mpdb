@@ -33,24 +33,21 @@
     <section id="about" class="about">
       <div class="container">
 
-        <div class="section-title">
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
+<!--        <div class="section-title">-->
+<!--          <p>The database is the extension and update of MPDB1.0 – A medicinal plant databases which focus on different aspects regarding the medicinal plants of Bangladesh. </p>-->
+<!--        </div>-->
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2">
             <img src="https://miro.medium.com/max/3200/1*A9TKqvXjTKEOZgu2Qb91-w.jpeg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>About MPDB 2.0</h3>
             <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              The database is the extension and update of <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110432/">MPDB1.0</a> – A medicinal plant databases which focus on different aspects regarding the medicinal plants of Bangladesh.
             </p>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+            <p style="text-align: justify">
+              MPDB 2.0 contains more than 1,000 medicinal plants from Bangladesh. It encompasses the scientific name of the plants, family name, local name, utilizing parts, location of the plants, active compound and the Pubmed ID of the articles of active compounds. The design of the database has been in relation to the local plants’ medicine therapies used since ancient times with the goal to understand the underlying mechanisms and main phytomediators/phytochemical agents responsible for the efficacy of these folk therapies along with discovering novel treatment strategies for various epidemics and emerging new diseases. This database can be regarded as potential phytochemical data repertoire for researchers and health practitioners alike in developing potential nutraceuticals against a potential large number of human health deficiencies. It must be noted that while the data in this database while highly focuses on curing human diseases, is not limited in its application for human diseases or diseases only (as it can be used in developing cosmetics, biofuel or alternate energy source development, bioremediation technologies etc.), in fact the data here has enough potential that it can hardly be fully harvested even after decades of study.
             </p>
           </div>
         </div>
