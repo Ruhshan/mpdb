@@ -11,7 +11,7 @@
 						<li><router-link to="/">Home</router-link></li>
 						<li><router-link to="/search">Search</router-link></li>
 						<li><a href="#">FAQ</a></li>
-						<li><a href="#">Team</a></li>
+						<li><router-link to="/team">Team</router-link></li>
 						<li><a href="#">Publications</a></li>
 					</ul>
 				</nav>
