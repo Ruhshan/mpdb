@@ -2,7 +2,8 @@ from openpyxl import load_workbook
 
 from elasticsearch import Elasticsearch
 from elasticsearch import helpers
-
+from decouple import config
+import sys
 
 def read_cell(sheet, cell):
     val = sheet[cell].value
@@ -15,7 +16,7 @@ def read_cell(sheet, cell):
 def read_excel(path):
     wb = load_workbook(filename=path)
     ws = wb["Sheet1"]
-    es = Elasticsearch()
+    es = Elasticsearch([config("ELASTICSEARCH_URL")])
     actions = []
 
     for r in range(2, ws.max_row):
@@ -48,7 +49,8 @@ def split_name(name):
 
     return scientific, author
 if __name__ == "__main__":
-    read_excel("/Users/ruhshan/Desktop/mpdb_files/short.xlsx")
+    excelPath = sys.argv[1]
+    read_excel(excelPath)
 
 
 
