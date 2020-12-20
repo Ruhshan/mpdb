@@ -12,7 +12,7 @@
 						<li><router-link to="/search">Search</router-link></li>
 						<li><a href="#">FAQ</a></li>
 						<li><router-link to="/team">Team</router-link></li>
-						<li><a href="#">Publications</a></li>
+						<li><router-link to="/publications">Publications</router-link></li>
 					</ul>
 				</nav>
 				<!-- .nav-menu -->

@@ -19,8 +19,12 @@ const routes: Array<RouteConfig> = [
     path: '/team',
     name: 'Team',
     component: ()=>import('@/views/Team.vue')
-  }
-
+  },
+{
+    path: '/publications',
+    name: 'Publications',
+    component: ()=>import('@/views/Publications.vue')
+  },
 
 ]
 
