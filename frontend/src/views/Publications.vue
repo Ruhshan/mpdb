@@ -36,7 +36,7 @@
     export default class Publications extends Vue {
         publications: Array<Publication>= [];
         created(){
-            axios.get("http://0.0.0.0:8090/api/v1/plant/publications").then((result: AxiosResponse<Array<Publication>>)=>{
+            axios.get(process.env.VUE_APP_API_URL+"/api/v1/plant/publications").then((result: AxiosResponse<Array<Publication>>)=>{
                 this.publications= result.data
             })
         }
