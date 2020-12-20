@@ -16,9 +16,9 @@
         <section class="inner-page">
               <div class="container">
                   <table style="width:100%">
-                <tr v-for="publication in publications" v-bind:key="publication.id" style= "">
-                    <td>{{publication.id}}</td>
-                    <td><a :href="publication.link" target="_blank">{{publication.title}}</a></td>
+                <tr v-for="publication in publications" v-bind:key="publication.id" >
+                    <td style="padding-right: 30px ">{{publication.id}}</td>
+                    <td> <a :href="publication.link" target="_blank">{{publication.title}}</a></td>
                 </tr>
 
             </table>
