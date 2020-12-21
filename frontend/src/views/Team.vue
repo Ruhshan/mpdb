@@ -25,7 +25,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" v-for="member in teamMembers" v-bind:key="member.id">
             <div class="member">
-              <img src=@/assets/img/team/team-1.jpg alt="">
+              <img :src="member.picture" alt="">
               <h4>{{ member.name }}</h4>
               <span>{{ member.role }}</span>
               <p>
@@ -60,13 +60,13 @@ import TeamMember from '@/entity/TeamMember';
 export default class Team extends Vue{
     teamMembers: Array<TeamMember> =[
         new TeamMember(1,"M. Arif Ashraf", "Project coordinator", "Postdoctoral Research Associate, Biology department, University of Massachusetts\n" +
-            "Amherst, USA", "mailto:arif.ashraf.opu@gmail.com","/img/team/team-1.jpg"),
+            "Amherst, USA", "mailto:arif.ashraf.opu@gmail.com","https://i.postimg.cc/MGp0TJxy/picture-arif-ashraf.jpg"),
         new TeamMember(2,"Md. Kamrul Hasan", "Project coordinator", "Lecturer, Department of Biochemistry and Molecular Biology\n" +
-            "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:kamrulhasanhridoy205@gmail.com","@/assets/img/team/team-1.jpg"),
-        new TeamMember(3,"Nazmul Hussain", "Reseacher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:nazmulrobs@gmail.com","@/assets/img/team/team-1.jpg"),
-        new TeamMember(4,"Rony Chanda", "Researcher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:ronychando98@gmail.com","@/assets/img/team/team-1.jpg"),
-        new TeamMember(5,"Ruhshan Ahmed Abir", "Frontend developer", "Bio-Bio-1 Bioinformatics Research Foundation", "mailto:ruhshan.ahmed@@gmail.com","@/assets/img/team/team-1.jpg"),
-        new TeamMember(6,"Mohsina Akter Mou", "Backend developer", "Shahjalal University of Science and Technology, Sylhet", "mailto:ruhshan.ahmed@@gmail.com","@/assets/img/team/team-1.jpg"),
+            "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:kamrulhasanhridoy205@gmail.com","https://i.postimg.cc/cCB6w6B6/kamrul-hasan.jpg"),
+        new TeamMember(3,"Nazmul Hussain", "Reseacher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:nazmulrobs@gmail.com","https://i.postimg.cc/VkjZM83p/nazmul-hossain.jpg"),
+        new TeamMember(4,"Rony Chanda", "Researcher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:ronychando98@gmail.com","https://i.postimg.cc/xTs12wxr/rony-chanda-r.jpg"),
+        new TeamMember(5,"Ruhshan Ahmed Abir", "Frontend developer", "Bio-Bio-1 Bioinformatics Research Foundation", "mailto:ruhshan.ahmed@@gmail.com","https://i.postimg.cc/fbRFhPrP/rushan-r.jpg"),
+        new TeamMember(6,"Mohsina Akter Mou", "Backend developer", "Shahjalal University of Science and Technology, Sylhet", "mailto:ruhshan.ahmed@@gmail.com","https://i.postimg.cc/fTHmrgYy/mou.jpg"),
     ];
 }
 </script>
