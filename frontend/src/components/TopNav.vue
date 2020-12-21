@@ -10,7 +10,7 @@
 					<ul>
 						<li><router-link to="/">Home</router-link></li>
 						<li><router-link to="/search">Search</router-link></li>
-						<li><a href="#">FAQ</a></li>
+						<li><router-link to="/guide">Guide</router-link></li>
 						<li><router-link to="/team">Team</router-link></li>
 						<li><router-link to="/publications">Publications</router-link></li>
 					</ul>

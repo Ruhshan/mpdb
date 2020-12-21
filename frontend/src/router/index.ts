@@ -20,10 +20,15 @@ const routes: Array<RouteConfig> = [
     name: 'Team',
     component: ()=>import('@/views/Team.vue')
   },
-{
+  {
     path: '/publications',
     name: 'Publications',
     component: ()=>import('@/views/Publications.vue')
+  },
+  {
+    path: '/guide',
+    name: 'Guide',
+    component: ()=>import('@/views/Guide.vue')
   },
 
 ]
