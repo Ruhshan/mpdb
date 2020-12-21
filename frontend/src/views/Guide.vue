@@ -15,41 +15,44 @@
         </section>
         <section class="inner-page">
             <div class="container">
-                <div class="card shadow-sm p-3">
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>If the user is looking for a specific plant, can search directly with its scientific
-                                name</p>
-                        </blockquote>
-                    </div>
-                    <figure class="figure">
-                        <img class="card-img-bottom" src="https://i.postimg.cc/CL0B8Pcd/mpdb1.png" alt="Card image cap">
-                         <figcaption class="figure-caption text-center">A caption for the above image.</figcaption>
-                    </figure>
+                <div v-for="g in guides" v-bind:key="g.id">
+                    <div class="card shadow-sm p-3">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>{{g.id}}. {{ g.text }}</p>
+                            </blockquote>
+                        </div>
+                        <figure class="figure">
+                            <img class="card-img-bottom" :src="g.imageUrl" :alt="g.imageCaption">
+                            <figcaption class="figure-caption text-center">{{ g.imageCaption }}</figcaption>
+                        </figure>
 
-                </div>
-                <br>
-                <div class="card shadow-sm p-3">
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>If the user is looking for a specific plant, can search directly with its scientific
-                                name</p>
-                        </blockquote>
                     </div>
-                    <figure class="figure">
-                        <img class="card-img-bottom" src="https://i.postimg.cc/CL0B8Pcd/mpdb1.png" alt="Card image cap">
-                         <figcaption class="figure-caption text-center">A caption for the above image.</figcaption>
-                    </figure>
-
+                    <br>
                 </div>
             </div>
         </section>
     </div>
 </template>
 
-<script>
-    export default {
-        name: "Guide"
+<script lang="ts">
+    import {Component, Vue} from "vue-property-decorator";
+    import axios, {AxiosResponse} from "axios";
+    import GuideObj from "@/entity/GuideObj";
+
+    @Component
+    export default class Guide extends Vue {
+        guides: Array<GuideObj> = [];
+
+        created() {
+            axios.get(process.env.VUE_APP_API_URL + '/api/v1/misc/guide').then(
+                (result: AxiosResponse<Array<GuideObj>>) => {
+                    this.guides = result.data
+
+                }
+            )
+        }
+
     }
 </script>
 

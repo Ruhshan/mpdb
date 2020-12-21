@@ -23,7 +23,7 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="icofont-question-circle"></i></div>
-              <h4 class="title"><a href="">Guide</a></h4>
+              <h4 class="title"><a href="">GuideObj</a></h4>
               <p class="description">This is an easy to use database, find step by step instruction here</p>
             </div>
           </div>
