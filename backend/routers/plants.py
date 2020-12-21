@@ -12,11 +12,9 @@ service = ElasticService()
 async def query_plants(search_request: SearchRequest):
     return service.search(search_request)
 
-
 @router.get("/ping")
 async def ping_pong():
     return "pong"
-
 
 @router.get("/publications")
 async def get_publications():
