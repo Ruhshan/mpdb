@@ -15,21 +15,20 @@
         </section>
         <section class="inner-page">
             <div class="container">
+                <div class="apa-ref">
+                    <h4>MPDB Origininal Release Article</h4>
+                    <p>Ashraf, M. A., Khatun, A., Sharmin, T., Mobin, F., Tanu, A. R., Morshed, T., Fakir, T. A., Begum, R. A., & Nabi, A. N. (2014). MPDB 1.0: a medicinal plant database of Bangladesh.
+                        <em><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110432/" target="_blank">Bioinformation</a></em>, 10(6), 384–386.</p>
+                </div>
 
                 <div class="apa-ref">
+                    <h4>Articles Citing MPDB</h4>
                     <p v-for="publication in publications" v-bind:key="publication.id">
                         {{publication.title}} <em><a :href="publication.link" target="_blank"> {{publication.journal}}</a></em>  {{publication.page }}
                     </p>
 
                 </div>
 
-<!--                <table style="width:100%">-->
-<!--                    <tr v-for="publication in publications" v-bind:key="publication.id">-->
-<!--                        <td style="padding-right: 30px ">{{publication.id}}</td>-->
-<!--                        <td><a :href="publication.link" target="_blank">{{publication.title}}</a></td>-->
-<!--                    </tr>-->
-
-<!--                </table>-->
             </div>
         </section>
     </div>

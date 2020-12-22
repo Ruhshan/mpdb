@@ -76,7 +76,8 @@
                 "Project coordinator",
                 "Postdoctoral Research Associate, Biology department, University of Massachusetts Amherst, USA",
                 "https://i.postimg.cc/MGp0TJxy/picture-arif-ashraf.jpg",
-                [{si: 1, icon: ['fas', 'envelope'], val: "mailto:arif.ashraf.opu@gmail.com"}]
+                [{si: 1, icon: ['fas', 'envelope'], val: "mailto:arif.ashraf.opu@gmail.com"},
+                    {si:2, icon:['fab','orcid'], val:"https://orcid.org/0000-0002-0879-5835"}]
             ),
             new TeamMember(2, "Md. Kamrul Hasan",
                 "Project coordinator", "Lecturer, Department of Biochemistry and Molecular Biology\n" +
