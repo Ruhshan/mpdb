@@ -16,14 +16,14 @@
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="icofont-newspaper"></i></div>
-              <h4 class="title"><a href="">Publication</a></h4>
+              <h4 class="title"><a href="/publications">Publication</a></h4>
               <p class="description">View list of publications that referenced this database in their work</p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="icon-box">
               <div class="icon"><i class="icofont-question-circle"></i></div>
-              <h4 class="title"><a href="">GuideObj</a></h4>
+              <h4 class="title"><a href="/guide">Guide</a></h4>
               <p class="description">This is an easy to use database, find step by step instruction here</p>
             </div>
           </div>
