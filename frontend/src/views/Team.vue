@@ -86,7 +86,7 @@
                 [{si: 1, icon: ['fas', 'envelope'], val: "mailto:kamrulhasanhridoy205@gmail.com"},
                     {si: 2, icon: ['fab', 'linkedin'], val: "https://www.linkedin.com/in/md-kamrul-hasan-a53b45ab"},
                     {si: 3, icon: ['fab', 'orcid'], val: "https://orcid.org/0000-0002-3032-7640"},
-                    {si: 3, icon: ['fab', 'researchgate'], val: "https://www.researchgate.net/profile/Md_Hasan319"}]
+                    {si: 4, icon: ['fab', 'researchgate'], val: "https://www.researchgate.net/profile/Md_Hasan319"}]
             ),
             new TeamMember(3,
                 "Nazmul Hussain",

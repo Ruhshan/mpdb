@@ -70,10 +70,18 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import HeroSlider from '../components/HeroSlider.vue'
+import axios, {AxiosResponse} from "axios";
 @Component({
   components:{ HeroSlider }
 })
 export default class Home extends Vue {
+    created(){
+        axios.get(process.env.VUE_APP_API_URL+'/api/v1/misc/ping').then((res: AxiosResponse)=>{
+            console.log(res.data)
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
 
 }
 </script>
