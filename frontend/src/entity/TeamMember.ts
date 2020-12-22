@@ -5,7 +5,8 @@ class TeamMember {
         public role: string,
         public affiliation: string,
         public email: string,
-        public picture: string
+        public picture: string,
+        public linkedIn: string = ""
 
     ) {}
 
