@@ -63,8 +63,8 @@ export default class Team extends Vue{
             "Amherst, USA", "mailto:arif.ashraf.opu@gmail.com","https://i.postimg.cc/MGp0TJxy/picture-arif-ashraf.jpg"),
         new TeamMember(2,"Md. Kamrul Hasan", "Project coordinator", "Lecturer, Department of Biochemistry and Molecular Biology\n" +
             "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:kamrulhasanhridoy205@gmail.com","https://i.postimg.cc/cCB6w6B6/kamrul-hasan.jpg"),
-        new TeamMember(3,"Nazmul Hussain", "Reseacher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:nazmulrobs@gmail.com","https://i.postimg.cc/VkjZM83p/nazmul-hossain.jpg"),
-        new TeamMember(4,"Rony Chanda", "Researcher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:ronychando98@gmail.com","https://i.postimg.cc/xTs12wxr/rony-chanda-r.jpg"),
+        new TeamMember(3,"Nazmul Hussain", "Reseacher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:nazmulrobs@gmail.com","https://i.postimg.cc/DznCXq81/nazmul-r.jpg"),
+        new TeamMember(4,"Rony Chanda", "Researcher", "Tejgaon College, National University of Bangladesh, Gazipur- 1704, Bangladesh", "mailto:ronychando98@gmail.com","https://i.postimg.cc/pVF13Xbh/rony-chanda-r.jpg"),
         new TeamMember(5,"Ruhshan Ahmed Abir", "Frontend developer", "Bio-Bio-1 Bioinformatics Research Foundation", "mailto:ruhshan.ahmed@@gmail.com","https://i.postimg.cc/fbRFhPrP/rushan-r.jpg"),
         new TeamMember(6,"Mohsina Akter Mou", "Backend developer", "Shahjalal University of Science and Technology, Sylhet", "mailto:ruhshan.ahmed@@gmail.com","https://i.postimg.cc/fTHmrgYy/mou.jpg"),
     ];
