@@ -11,6 +11,9 @@
 <!--                </div>-->
             </div>
 
+
+            <spinner :visible="fetching"></spinner>
+
             <div class="table-responsive">
                 <table
                         class="table table-hover table-striped table-bordered"
@@ -102,8 +105,9 @@
     import axios, {AxiosResponse} from "axios";
     import SearchResult from "@/entity/SearchResult";
     import Plant from '@/entity/Plant';
+    import Spinner from "@/components/Spinner.vue";
 
-    @Component
+    @Component({components:{Spinner}})
     export default class SearchTable extends Vue {
         tableParams = new TableParams("",
             new Fields("", "", "", "", "", ""),
@@ -114,6 +118,7 @@
         hits = 0;
         pages: Array<number> = [];
         lastQuery = "";
+        fetching = false;
         baseUrl = process.env.VUE_APP_API_URL
 
         created() {
@@ -129,10 +134,15 @@
         }
 
         fetch() {
+            this.fetching = true
             axios.post(this.baseUrl+"/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
                 this.hits = res.data.hits;
                 this.plants = res.data.plants;
                 this.pages = this.getWholePageRange().slice(0, 10);
+                this.fetching = false
+            }).catch((err)=>{
+                console.log(err)
+                this.fetching = false
             })
         }
 

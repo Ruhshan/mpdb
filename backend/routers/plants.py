@@ -6,7 +6,7 @@ from backend.service.elasticService import ElasticService
 
 router = APIRouter()
 service = ElasticService()
-
+import time
 
 @router.post("/query", response_model=SearchResult)
 async def query_plants(search_request: SearchRequest):
