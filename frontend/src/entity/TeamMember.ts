@@ -4,9 +4,9 @@ class TeamMember {
         public name: string,
         public role: string,
         public affiliation: string,
-        public email: string,
         public picture: string,
-        public linkedIn: string = ""
+        public social: Array<any> = [],
+
 
     ) {}
 
