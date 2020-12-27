@@ -1,3 +1,4 @@
+import ActiveCompound from "@/entity/ActiveCompound";
 
 class Plant{
     constructor(
@@ -9,7 +10,8 @@ class Plant{
         public ailment: string,
         public activeCompound: string,
         public pmid: string,
-        public utilizedPart: string
+        public utilizedPart: string,
+        public pmAcList: Array<ActiveCompound>
     ) {}
 
 }
