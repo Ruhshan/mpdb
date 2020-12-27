@@ -1,4 +1,7 @@
 from pydantic import BaseModel
+from typing import List
+
+from backend.schema.activeCompound import ActiveCompound
 
 
 class Plant(BaseModel):
@@ -11,3 +14,4 @@ class Plant(BaseModel):
     ailment: str
     activeCompound: str
     pmid: str
+    pmAcList: List[ActiveCompound]
