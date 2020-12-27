@@ -4,7 +4,7 @@ from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 from decouple import config
 import sys
-
+import json
 def read_cell(sheet, cell):
     val = sheet[cell].value
     if val is not None:
@@ -16,7 +16,8 @@ def read_cell(sheet, cell):
 def read_excel(path):
     wb = load_workbook(filename=path)
     ws = wb["Sheet1"]
-    es = Elasticsearch([config("ELASTICSEARCH_URL")])
+    # es = Elasticsearch([config("ELASTICSEARCH_URL")])
+    es = Elasticsearch()
     actions = []
 
     for r in range(2, ws.max_row):
@@ -32,13 +33,12 @@ def read_excel(path):
             row["ailment"] = read_cell(ws, "F{}".format(r))
             row["activeCompound"] = read_cell(ws, "G{}".format(r))
             row["pmid"] = read_cell(ws, "H{}".format(r))
+            row["pmAcList"] = json.loads(read_cell(ws, "I{}".format(r)))
             actions.append({
                 "_index":"mpdb",
                 "_id":r-1,
                 "_source":row
             })
-
-
 
     helpers.bulk(es, actions=actions)
 
