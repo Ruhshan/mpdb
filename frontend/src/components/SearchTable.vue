@@ -6,9 +6,32 @@
                     <input type="text" class="form-control" placeholder="Type your keywords then press enter to seach"
                            v-model="tableParams.globalSearch" id="idSearch" v-on:keyup.enter="search"/>
                 </div>
-<!--                <div class="pull-right">-->
-<!--                    <a href="#" class="btn btn-dark">Download</a>-->
-<!--                </div>-->
+                <!--                <div class="pull-right">-->
+                <!--                    <a href="#" class="btn btn-dark">Download</a>-->
+                <!--                </div>-->
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <table class="table">
+                                <tr>
+                                    <th>PMID</th>
+                                    <th>Active Compound</th>
+                                </tr>
+                                <tr v-for="ac in activeCompounds" v-bind:key="ac.pmid">
+                                    <th><a target="_blank" :href="'https://pubmed.ncbi.nlm.nih.gov/'+ac.pmid">{{ ac.pmid }}</a></th>
+                                    <td>{{ ac.ac }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -54,7 +77,8 @@
                         <td class="table-cell" v-html="plant.utilizedPart"></td>
                         <td class="table-cell" v-html="plant.ailment"></td>
                         <td class="table-cell" v-html="plant.activeCompound"></td>
-                        <td class="table-cell" v-html="formatPubmedUrl(plant.pmid)"></td>
+                        <td class="table-cell" @click="showModal(plant.pmAcList)"
+                            v-html="formatPubmedUrl(plant.pmid)"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -106,8 +130,9 @@
     import SearchResult from "@/entity/SearchResult";
     import Plant from '@/entity/Plant';
     import Spinner from "@/components/Spinner.vue";
+    import ActiveCompound from "@/entity/ActiveCompound";
 
-    @Component({components:{Spinner}})
+    @Component({components: {Spinner}})
     export default class SearchTable extends Vue {
         tableParams = new TableParams("",
             new Fields("", "", "", "", "", ""),
@@ -119,15 +144,16 @@
         pages: Array<number> = [];
         lastQuery = "";
         fetching = false;
-        baseUrl = process.env.VUE_APP_API_URL
+        baseUrl = process.env.VUE_APP_API_URL;
+        activeCompounds: Array<ActiveCompound> = [];
 
         created() {
             this.fetch();
             console.log(this.baseUrl)
         }
 
-        search(){
-            if(this.tableParams.globalSearch.length> 2 || this.lastQuery!== this.tableParams.globalSearch){
+        search() {
+            if (this.tableParams.globalSearch.length > 2 || this.lastQuery !== this.tableParams.globalSearch) {
                 this.fetch()
             }
             this.lastQuery = this.tableParams.globalSearch
@@ -135,12 +161,12 @@
 
         fetch() {
             this.fetching = true
-            axios.post(this.baseUrl+"/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
+            axios.post(this.baseUrl + "/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
                 this.hits = res.data.hits;
                 this.plants = res.data.plants;
                 this.pages = this.getWholePageRange().slice(0, 10);
                 this.fetching = false
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err)
                 this.fetching = false
             })
@@ -152,7 +178,7 @@
 
         getDesc() {
 
-            if(this.hits == 0){
+            if (this.hits == 0) {
                 return "No match available!"
             }
 
@@ -187,22 +213,38 @@
             }
         }
 
-        formatName(plant: Plant){
+        formatName(plant: Plant) {
             return `<em>${plant.scientificName}</em> ${plant.author}`
         }
 
-        formatPubmedUrl(pmid: string){
-            if(pmid.length>0){
-                if(pmid.indexOf("span")!==-1){
+        formatPubmedUrl(pmid: string) {
+            if (pmid.length > 0) {
+                if (pmid.indexOf("span") !== -1) {
                     console.log(pmid)
-                    pmid = pmid.replace("<span class='hl'>","").replace("</span>","")
-                    return `<span class="hl"><a target="_blank" style="font-weight: bold; font-size: 14px" href="https://pubmed.ncbi.nlm.nih.gov/${pmid}">${pmid}</a></span>`
-                }else{
-                    return `<a target="_blank" style="font-weight: bold; font-size: 14px" href="https://pubmed.ncbi.nlm.nih.gov/${pmid}">${pmid}</a>`
+                    pmid = pmid.replace("<span class='hl'>", "").replace("</span>", "")
+                    return `<span class="hl"><a target="" style="font-weight: bold; font-size: 14px" href="#">${pmid}</a></span>`
+                } else {
+                    return `<a target="" style="font-weight: bold; font-size: 14px" href="#">${pmid}</a>`
                 }
-            }else{
+            } else {
                 return ""
             }
+        }
+
+        showModal(pmAcList: Array<ActiveCompound>) {
+            if(pmAcList.length>1){
+                this.activeCompounds = pmAcList
+            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+            // @ts-ignore
+            // eslint-disable-next-line no-undef
+            $("#exampleModal").modal("show")
+            }else if(pmAcList.length == 1){
+                window.open("https://pubmed.ncbi.nlm.nih.gov/"+pmAcList[0].pmid, '_blank')
+            }else{
+                console.log("nothing to do")
+            }
+
+
         }
 
     }
