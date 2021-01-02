@@ -16,13 +16,15 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
+                            <div align="center" v-html="formatName(selectedPlant)" style="padding: 10px; font-weight: bold"></div>
                             <table class="table">
                                 <tr>
                                     <th>PMID</th>
-                                    <th>Active Compound</th>
+                                    <th>Active Compounds</th>
                                 </tr>
-                                <tr v-for="ac in activeCompounds" v-bind:key="ac.pmid">
-                                    <th><a target="_blank" :href="'https://pubmed.ncbi.nlm.nih.gov/'+ac.pmid">{{ ac.pmid }}</a></th>
+                                <tr v-for="ac in selectedPlant.pmAcList" v-bind:key="ac.pmid">
+                                    <th><a target="_blank" :href="'https://pubmed.ncbi.nlm.nih.gov/'+ac.pmid">{{ ac.pmid
+                                        }}</a></th>
                                     <td>{{ ac.ac }}</td>
                                 </tr>
                             </table>
@@ -77,7 +79,7 @@
                         <td class="table-cell" v-html="plant.utilizedPart"></td>
                         <td class="table-cell" v-html="plant.ailment"></td>
                         <td class="table-cell" v-html="plant.activeCompound"></td>
-                        <td class="table-cell" @click="showModal(plant.pmAcList)"
+                        <td class="table-cell" @click="showModal(plant)"
                             v-html="formatPubmedUrl(plant.pmid)"></td>
                     </tr>
                     </tbody>
@@ -146,6 +148,7 @@
         fetching = false;
         baseUrl = process.env.VUE_APP_API_URL;
         activeCompounds: Array<ActiveCompound> = [];
+        selectedPlant: Plant = {} as Plant;
 
         created() {
             this.fetch();
@@ -231,16 +234,17 @@
             }
         }
 
-        showModal(pmAcList: Array<ActiveCompound>) {
-            if(pmAcList.length>1){
-                this.activeCompounds = pmAcList
-            // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-            // @ts-ignore
-            // eslint-disable-next-line no-undef
-            $("#exampleModal").modal("show")
-            }else if(pmAcList.length == 1){
-                window.open("https://pubmed.ncbi.nlm.nih.gov/"+pmAcList[0].pmid, '_blank')
-            }else{
+        showModal(selectedPlant: Plant) {
+
+            if (selectedPlant.pmAcList.length > 1) {
+                this.selectedPlant = selectedPlant;
+                // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+                // @ts-ignore
+                // eslint-disable-next-line no-undef
+                $("#exampleModal").modal("show")
+            } else if (selectedPlant.pmAcList.length == 1) {
+                window.open("https://pubmed.ncbi.nlm.nih.gov/" + selectedPlant.pmAcList[0].pmid, '_blank')
+            } else {
                 console.log("nothing to do")
             }
 
