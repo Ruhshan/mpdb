@@ -1,22 +1,25 @@
 <template>
     <div>
         <div style="padding-left: 10px; padding-right: 10px">
-            <div class="d-lg-flex align-items-center justify-content-between mb-4">
+            <div class="d-lg-flex align-items-center mb-4">
                 <div class="input-group w-50">
                     <input type="text" class="form-control" placeholder="Type your keywords then press enter to seach"
                            v-model="tableParams.globalSearch" id="idSearch" v-on:keyup.enter="search"/>
                 </div>
-                <!--                <div class="pull-right">-->
-                <!--                    <a href="#" class="btn btn-dark">Download</a>-->
-                <!--                </div>-->
+                <div style="padding-left: 10px">
+                    <font-awesome-icon :icon="['fas','info-circle']" data-toggle="modal" data-target="#infoModal"/>
+                </div>
+
             </div>
+            <advanced-search-info></advanced-search-info>
 
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            <div align="center" v-html="formatName(selectedPlant)" style="padding: 10px; font-weight: bold"></div>
+                            <div align="center" v-html="formatName(selectedPlant)"
+                                 style="padding: 10px; font-weight: bold"></div>
                             <table class="table">
                                 <tr>
                                     <th>PMID</th>
@@ -52,7 +55,7 @@
                         Scientific Name
                     </th>
                     <th class="table-header">
-                        Family
+                        Family Name
                     </th>
                     <th class="table-header">
                         Local Name
@@ -133,8 +136,15 @@
     import Plant from '@/entity/Plant';
     import Spinner from "@/components/Spinner.vue";
     import ActiveCompound from "@/entity/ActiveCompound";
+    import AdvancedSearchInfo from "@/components/AdvancedSearchInfo.vue";
 
-    @Component({components: {Spinner}})
+    import {library} from '@fortawesome/fontawesome-svg-core'
+    import {faInfoCircle} from '@fortawesome/free-solid-svg-icons'
+    import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+
+    library.add(faInfoCircle)
+
+    @Component({components: {Spinner, FontAwesomeIcon, AdvancedSearchInfo}})
     export default class SearchTable extends Vue {
         tableParams = new TableParams("",
             new Fields("", "", "", "", "", ""),

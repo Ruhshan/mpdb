@@ -23,11 +23,6 @@ class ElasticService:
         query = {"match_all": {}}
 
         if search_request.globalSearch:
-            # query = {"multi_match": {
-            #         "query": search_request.globalSearch,
-            #         "fields": ["scientificName", "author","familyName", "localName", "utilizedPart",
-            #                    "ailment","activeCompound", "pmid"]
-            #     }}
             query = {"query_string":{
                 "query":search_request.globalSearch
             }}
