@@ -11,7 +11,7 @@
           <div class="carousel-container">
             <div class="container">
               <h2 class="animate__animated animate__fadeInDown">Welcome to <span>MPDB 2.0</span></h2>
-              <p class="animate__animated animate__fadeInUp">A potential phytochemical data repertoire for indigenous medicinal plants of Bangladesh</p>
+              <p class="animate__animated animate__fadeInUp">An extensive phytochemical data repertoire for indigenous medicinal plants of Bangladesh</p>
             </div>
           </div>
         </div>
