@@ -39,20 +39,24 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2">
-            <img src="https://miro.medium.com/max/3200/1*A9TKqvXjTKEOZgu2Qb91-w.jpeg" class="img-fluid" alt="">
+<!--            <img src="https://miro.medium.com/max/3200/1*A9TKqvXjTKEOZgu2Qb91-w.jpeg" class="img-fluid" alt="">-->
+               <iframe width="500" height="350"
+                    src="https://www.youtube.com/embed/tibx8MA6-Xs?controls=1" style="margin-top: 50px" allowfullscreen>
+                </iframe>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>About MPDB 2.0</h3>
 
             <p style="text-align: justify">
-              MPDB 2.0 contains more than 500 medicinal plants from Bangladesh. It encompasses the scientific name of the plants, family name, local name, utilizing parts, location of the plants, active compound and the Pubmed ID of the articles of active compounds. The design of the database has been in relation to the local plants’ medicine therapies used since ancient times with the goal to understand the underlying mechanisms and main phytomediators/phytochemical agents responsible for the efficacy of these folk therapies along with discovering novel treatment strategies for various epidemics and emerging new diseases. This database can be regarded as potential phytochemical data repertoire for researchers and health practitioners alike in developing potential nutraceuticals against a potential large number of human health deficiencies. It must be noted that while the data in this database while highly focuses on curing human diseases, is not limited in its application for human diseases or diseases only (as it can be used in developing cosmetics, biofuel or alternate energy source development, bioremediation technologies etc.), in fact the data here has enough potential that it can hardly be fully harvested even after decades of study.
+              MPDB 2.0 contains more than 500 indigenous medicinal plants of Bangladesh. It encompasses the plants scientific name, family name, local names, utilized parts, active compounds and the PubMed IDs of related articles. The design of the database has been in reference to the local plant medicinal therapies used since ancient times. The goal of this database is to understand the underlying mechanisms and identify the main phytochemical agents responsible for the efficacy of these folk therapies along with discovering novel treatment methods for diseases, both old and new. The MPDB 2.0 database is an extensive phytochemical data repertoire for researchers and health practitioners alike in developing potential nutraceuticals against a large number of human health deficiencies. It must be noted that while the information in this database highly focuses on human diseases, is not limited in its application for human diseases or diseases only, as many of the plants indexed here can serve in developing biofuel or bioremediation technologies or nutritive diets or cosmetics, in fact the data recorded here has enough potential that it can hardly be fully harvested, even after decades of study.
+
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
             <p class="">
-              The database is the extension and update of <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110432/">MPDB1.0</a> – A medicinal plant databases which focus on different aspects regarding the medicinal plants of Bangladesh.
+                This database is the extension and update of <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4110432/">MPDB1.0</a> – A medicinal plant database that focuses on different aspects regarding the medicinal plants of Bangladesh.
           </p>
           </div>
         </div>
