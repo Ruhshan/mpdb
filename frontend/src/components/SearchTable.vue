@@ -70,7 +70,7 @@
                         Active Compound
                     </th>
                     <th class="table-header">
-                        PMID
+                        Reference (PMID)
                     </th>
                     </thead>
                     <tbody>
