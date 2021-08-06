@@ -15,6 +15,11 @@
         </section>
         <section class="inner-page">
             <div class="container">
+                 <div class="apa-ref">
+                    <h4>MPDB 2.0 Release Article</h4>
+                    <p>Nazmul Hussain, Rony Chanda, Ruhshan Ahmed Abir, Mohsina Akter Mou, Md. Kamrul Hasan & M. Arif Ashraf. (2021). MPDB 2.0: a large scale and integrated medicinal plant database of Bangladesh.
+                        <em><a href="https://bmcresnotes.biomedcentral.com/articles/10.1186/s13104-021-05721-6" target="_blank">BMC Research Notes</a></em>, 14, 301 (2021).</p>
+                </div>
                 <div class="apa-ref">
                     <h4>MPDB Origininal Release Article</h4>
                     <p>Ashraf, M. A., Khatun, A., Sharmin, T., Mobin, F., Tanu, A. R., Morshed, T., Fakir, T. A., Begum, R. A., & Nabi, A. N. (2014). MPDB 1.0: a medicinal plant database of Bangladesh.
