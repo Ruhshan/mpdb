@@ -1,6 +1,6 @@
 from pydantic.main import BaseModel
 
-from backend.schema.searchFields import SearchFields
+from schema.searchFields import SearchFields
 from typing import Optional
 
 

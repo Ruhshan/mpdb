@@ -1,8 +1,8 @@
 from elasticsearch import Elasticsearch
 from fastapi import HTTPException
 
-from backend.schema.searchRequest import SearchRequest
-from backend.schema.searchResult import SearchResult
+from schema.searchRequest import SearchRequest
+from schema.searchResult import SearchResult
 
 from decouple import config
 

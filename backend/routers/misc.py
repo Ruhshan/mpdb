@@ -2,7 +2,7 @@ from typing import List
 
 from fastapi import APIRouter
 
-from backend.schema.guide import Guide
+from schema.guide import Guide
 
 router = APIRouter()
 

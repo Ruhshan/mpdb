@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List
 
-from backend.schema.activeCompound import ActiveCompound
+from schema.activeCompound import ActiveCompound
 
 
 class Plant(BaseModel):

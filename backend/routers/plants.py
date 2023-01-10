@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from backend.schema.searchRequest import SearchRequest
-from backend.schema.searchResult import SearchResult
-from backend.service.elasticService import ElasticService
+from schema.searchRequest import SearchRequest
+from schema.searchResult import SearchResult
+from service.elasticService import ElasticService
 
 router = APIRouter()
 service = ElasticService()
