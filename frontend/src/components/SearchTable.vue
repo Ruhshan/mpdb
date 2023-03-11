@@ -156,13 +156,11 @@
         pages: Array<number> = [];
         lastQuery = "";
         fetching = false;
-        baseUrl = process.env.VUE_APP_API_URL;
         activeCompounds: Array<ActiveCompound> = [];
         selectedPlant: Plant = {} as Plant;
 
         created() {
             this.fetch();
-            console.log(this.baseUrl)
         }
 
         search() {
@@ -174,7 +172,7 @@
 
         fetch() {
             this.fetching = true
-            axios.post(this.baseUrl + "/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
+            axios.post("/api/v1/plant/query", this.tableParams).then((res: AxiosResponse<SearchResult>) => {
                 this.hits = res.data.hits;
                 this.plants = res.data.plants;
                 this.pages = this.getWholePageRange().slice(0, 10);

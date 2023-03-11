@@ -50,7 +50,7 @@
         publications: Array<Publication> = [];
 
         created() {
-            axios.get(process.env.VUE_APP_API_URL + "/api/v1/misc/publications").then((result: AxiosResponse<Array<Publication>>) => {
+            axios.get( "/api/v1/misc/publications").then((result: AxiosResponse<Array<Publication>>) => {
                 this.publications = result.data
             })
         }

@@ -45,7 +45,7 @@
         guides: Array<GuideObj> = [];
 
         created() {
-            axios.get(process.env.VUE_APP_API_URL + '/api/v1/misc/guide').then(
+            axios.get('/api/v1/misc/guide').then(
                 (result: AxiosResponse<Array<GuideObj>>) => {
                     this.guides = result.data
 
