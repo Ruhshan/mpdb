@@ -17,7 +17,6 @@ def read_excel(path):
     wb = load_workbook(filename=path)
     ws = wb["Sheet1"]
     es = Elasticsearch([config("ELASTICSEARCH_URL")])
-    #es = Elasticsearch()
     actions = []
 
     for r in range(2, ws.max_row):
@@ -40,6 +39,7 @@ def read_excel(path):
                 "_source":row
             })
 
+    actions = actions[:1]
     helpers.bulk(es, actions=actions)
 
 def split_name(name):
