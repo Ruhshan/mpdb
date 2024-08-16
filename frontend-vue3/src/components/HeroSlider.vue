@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <v-carousel cycle hide-delimiters height="450">
+  <v-carousel cycle hide-delimiters height="450" show-arrows="hover">
     <v-carousel-item>
       <v-sheet class="bg-green-darken-1 slider-bg-img1 slider-bg" height="450">
         <v-container class="fill-height">
