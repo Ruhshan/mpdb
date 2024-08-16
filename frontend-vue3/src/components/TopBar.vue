@@ -6,16 +6,16 @@
       <v-row>
         <v-col>
           <v-toolbar-title>
-            <h2 class="text-primary">MPDB 2.0</h2>
+            <h2 class="text-primary" data-testid="app-title">MPDB 2.0</h2>
           </v-toolbar-title>
         </v-col>
         <v-col>
           <div d-flex flex-row>
             <v-btn>
-              <router-link to="/#">Home</router-link>
+              <router-link to="/#" data-testid="home-button">Home</router-link>
             </v-btn>
             <v-btn>
-              <router-link to="/#">Search</router-link>
+              <router-link to="/#" data-testid="search-button">Search</router-link>
             </v-btn>
           </div>
         </v-col>
