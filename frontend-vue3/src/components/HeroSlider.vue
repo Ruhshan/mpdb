@@ -1,8 +1,14 @@
 <script setup lang="ts"></script>
 
 <template>
-  <v-carousel cycle hide-delimiters height="450" show-arrows="hover">
-    <v-carousel-item>
+  <v-carousel
+    cycle
+    hide-delimiters
+    height="450"
+    show-arrows="hover"
+    data-testid="carousel-component"
+  >
+    <v-carousel-item data-testid="carousel-item-1">
       <v-sheet class="bg-green-darken-1 slider-bg-img1 slider-bg" height="450">
         <v-container class="fill-height">
           <v-row align="center" justify="center" class="fill-height">
@@ -17,7 +23,7 @@
         </v-container>
       </v-sheet>
     </v-carousel-item>
-    <v-carousel-item>
+    <v-carousel-item data-testid="carousel-item-2">
       <v-sheet class="bg-green-darken-1 slider-bg-img2 slider-bg" height="450">
         <v-container class="fill-height">
           <v-row align="center" justify="center" class="fill-height">
