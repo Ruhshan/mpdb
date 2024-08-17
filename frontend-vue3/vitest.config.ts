@@ -15,7 +15,12 @@ export default mergeConfig(
                     inline: ['vuetify']
                 }
             },
-            setupFiles: ['./vitest.setup.ts']
+            setupFiles: ['./vitest.setup.ts'],
+            coverage: {
+                provider: 'v8',
+                reporter: ['text'],
+            }
+
         }
     })
 )
