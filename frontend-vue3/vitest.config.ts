@@ -18,7 +18,7 @@ export default mergeConfig(
             setupFiles: ['./vitest.setup.ts'],
             coverage: {
                 provider: 'v8',
-                reporter: ['text','html', 'json-summary'],
+                reporter: ['text','html', 'json-summary',  'json'],
                 reportOnFailure: true,
             }
 
