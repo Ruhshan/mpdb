@@ -26,8 +26,9 @@ jobs:
         working-directory: ./frontend-vue3
         run: npx vitest --coverage.enabled true
       - name: 'Report Coverage'
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2.5.0
         working-directory: ./frontend-vue3
+        run: echo "ok"
         # Set if: always() to also generate the report if tests are failing
         # Only works if you set `reportOnFailure: true` in your vite config as specified above
-        if: always()
-        uses:  davelosert/vitest-coverage-report-action@v2.5.0
