@@ -1,0 +1,34 @@
+name: 'Test'
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Required to checkout the code
+      contents: read
+      # Required to put a comment into the pull-request
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: 'Install Node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      - name: 'Install Deps'
+        working-directory: ./frontend-vue3
+        run: npm install
+      - name: 'Test'
+        working-directory: ./frontend-vue3
+        run: npx vitest --coverage.enabled true
+      - name: 'Report Coverage'
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2.5.0
+        with:
+          working-directory: './frontend-vue3'
+        # Set if: always() to also generate the report if tests are failing
+        # Only works if you set `reportOnFailure: true` in your vite config as specified above
