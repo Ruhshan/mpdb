@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import TopBar from '@/components/TopBar.vue'
 import HeroSlider from '@/components/HeroSlider.vue'
+import FeaturedServices from '@/components/FeaturedServices.vue'
 </script>
 
 <template>
@@ -8,7 +9,7 @@ import HeroSlider from '@/components/HeroSlider.vue'
     <TopBar></TopBar>
     <v-main>
       <HeroSlider></HeroSlider>
-      <v-container> </v-container>
+      <FeaturedServices></FeaturedServices>
     </v-main>
   </v-app>
 </template>
