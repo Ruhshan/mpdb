@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const homeRoute = {name:'home'}
+</script>
 
 <template>
   <v-app-bar elevation="0.5">
@@ -10,13 +12,9 @@
           </v-toolbar-title>
         </v-col>
         <v-col>
-          <div d-flex flex-row>
-            <v-btn>
-              <router-link to="/#" data-testid="home-button">Home</router-link>
-            </v-btn>
-            <v-btn>
-              <router-link to="/#" data-testid="search-button">Search</router-link>
-            </v-btn>
+          <div class="d-flex justify-end">
+            <router-link :to="homeRoute" data-testid="home-button">Home</router-link>
+            <router-link to="/#" data-testid="search-button">Search</router-link>
           </div>
         </v-col>
       </v-row>
@@ -24,4 +22,13 @@
   </v-app-bar>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss">
+a {
+  text-decoration: none;
+  color: black;
+  padding-right: 15px;
+}
+a:hover {
+  color: rgb(var(--v-theme-primary));
+}
+</style>

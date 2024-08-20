@@ -32,21 +32,19 @@ const featuredServices = ref<FeaturedServices[]>([
 <template>
   <section class="section bg-section">
     <v-container>
-      <v-row no-gutters align="center" justify="center">
-        <v-col cols="4" v-for="fs in featuredServices" :key="fs.title">
-          <div class="ico-box">
-            <v-icon
-              style="font-size: 42px; margin-bottom: 15px"
-              color="green-darken-1"
-              :icon="fs.icon"
-            ></v-icon>
-            <h4 class="title">{{ fs.title }}</h4>
-            <p class="description">
-              {{ fs.description }}
-            </p>
-          </div>
-        </v-col>
-      </v-row>
+      <div class="d-flex justify-space-between">
+        <div class="ico-box" v-for="fs in featuredServices" :key="fs.title">
+          <v-icon
+            style="font-size: 42px; margin-bottom: 15px"
+            color="green-darken-1"
+            :icon="fs.icon"
+          ></v-icon>
+          <h4 class="title">{{ fs.title }}</h4>
+          <p class="description">
+            {{ fs.description }}
+          </p>
+        </div>
+      </div>
     </v-container>
   </section>
 </template>
