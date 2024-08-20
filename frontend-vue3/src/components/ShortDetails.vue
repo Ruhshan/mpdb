@@ -5,7 +5,7 @@
     <v-container>
       <v-row>
         <v-col cols="6">
-          <h3 style="font-weight: 700; font-size: 28px">About MPDB 2.0</h3>
+          <h3 class='title'>About MPDB 2.0</h3>
           <p style="text-align: justify">
             MPDB 2.0 contains more than 500 indigenous medicinal plants of Bangladesh. It
             encompasses the plants scientific name, family name, local names, utilized parts, active
@@ -56,5 +56,9 @@ a {
 
 a:hover {
   color: rgb(var(--v-theme-primary-lighten));
+}
+
+.title {
+  font-weight: 700; font-size: 28px
 }
 </style>
