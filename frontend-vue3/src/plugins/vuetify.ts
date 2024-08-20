@@ -14,10 +14,13 @@ const vuetify = createVuetify({
   },
   theme: {
     themes: {
+      customProperties: true,
       light: {
         dark: false,
         colors: {
-          primary: colors.green.base
+          primary: colors.green.base,
+          'primary-lighten': colors.green.lighten2,
+          section: colors.green.lighten5 //'#f8fcf9'
         }
       }
     }

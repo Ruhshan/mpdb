@@ -30,7 +30,7 @@ const featuredServices = ref<FeaturedServices[]>([
 </script>
 
 <template>
-  <section class="section">
+  <section class="section bg-section">
     <v-container>
       <v-row no-gutters align="center" justify="center">
         <v-col cols="4" v-for="fs in featuredServices" :key="fs.title">
@@ -51,10 +51,9 @@ const featuredServices = ref<FeaturedServices[]>([
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .section {
   padding: 60px 0;
-  background-color: #f8fcf9;
 }
 
 .ico-box {
@@ -68,7 +67,7 @@ const featuredServices = ref<FeaturedServices[]>([
 }
 
 .title:hover {
-  color: #5cb874;
+  color: rgb(var(--v-theme-primary));
   cursor: pointer;
 }
 
