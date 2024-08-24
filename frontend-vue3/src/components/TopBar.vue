@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const homeRoute = {name:'home'}
-const guideRoute =  {name: 'guide'}
+const homeRoute = { name: 'home' }
+const guideRoute = { name: 'guide' }
 </script>
 
 <template>

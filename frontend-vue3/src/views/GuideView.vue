@@ -1,11 +1,11 @@
 <script setup lang="ts">
+import BreadCrumb from '@/components/BreadCrumb.vue'
+
 
 </script>
 
 <template>
-I am guide view
+  <BreadCrumb title="Guide" item-name="Guide"></BreadCrumb>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
