@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { mount } from '@vue/test-utils'
+import {DOMWrapper, mount} from '@vue/test-utils'
 
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -12,16 +12,20 @@ const vuetify = createVuetify({
 })
 
 import TopBar from '../../App.vue'
+import router from "../../router";
 
 describe('TopBar.vue', () => {
   const wrapper = mount(TopBar, {
     global: {
-      plugins: [vuetify],
+      plugins: [vuetify, router],
       stubs: {
         RouterLink: RouterLinkStub
       }
     }
   })
+
+  const findRouterLinkTo = (component: DOMWrapper<Element> ) =>
+      component.findComponent(RouterLinkStub).props().to
 
   it('renders the title "MPDB 2.0"', async () => {
     const title = wrapper.find('[data-testid="app-title"]')
@@ -34,11 +38,22 @@ describe('TopBar.vue', () => {
     const homeButton = wrapper.find('[data-testid="home-button"]')
     expect(homeButton.exists()).toBe(true)
     expect(homeButton.text()).toBe('Home')
+
+    expect(findRouterLinkTo(homeButton)).toEqual({ name: 'home' })
   })
 
   it('renders the Search button with text "Search"', () => {
-    const homeButton = wrapper.find('[data-testid="search-button"]')
-    expect(homeButton.exists()).toBe(true)
-    expect(homeButton.text()).toBe('Search')
+    const searchButton = wrapper.find('[data-testid="search-button"]')
+    expect(searchButton.exists()).toBe(true)
+    expect(searchButton.text()).toBe('Search')
+  })
+
+  it('renders the Guid button with text "Search"', () => {
+    const guideButton = wrapper.find('[data-testid="guide-button"]')
+
+    expect(guideButton.exists()).toBe(true)
+    expect(guideButton.text()).toBe('Guide')
+
+    expect(findRouterLinkTo(guideButton)).toEqual({ name: 'guide' })
   })
 })

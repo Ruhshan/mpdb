@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const homeRoute = {name:'home'}
+const guideRoute =  {name: 'guide'}
 </script>
 
 <template>
@@ -15,6 +16,7 @@ const homeRoute = {name:'home'}
           <div class="d-flex justify-end">
             <router-link :to="homeRoute" data-testid="home-button">Home</router-link>
             <router-link to="/#" data-testid="search-button">Search</router-link>
+            <router-link :to="guideRoute" data-testid="guide-button">Guide</router-link>
           </div>
         </v-col>
       </v-row>
