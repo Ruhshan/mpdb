@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import {ref} from "vue";
+import { ref } from 'vue'
 
 interface Props {
   title: string
@@ -27,7 +26,6 @@ const breadCrumbItems = ref<BreadCrumbItem[]>([
     href: ''
   }
 ])
-
 </script>
 
 <template>
@@ -41,5 +39,3 @@ const breadCrumbItems = ref<BreadCrumbItem[]>([
     </v-container>
   </div>
 </template>
-
-<style scoped></style>
