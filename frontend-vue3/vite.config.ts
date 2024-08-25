@@ -9,6 +9,15 @@ import vuetify from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/api/v1':{
+        target: process.env.API_BASE,
+        changeOrigin: true,
+        secure: false
+      }
+    }
+  },
   plugins: [
     vue(),
     vueJsx(),
