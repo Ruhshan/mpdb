@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BreadCrumb from '@/components/BreadCrumb.vue'
-import UserGuide from "@/components/UserGuide.vue";
+import UserGuide from '@/components/UserGuide.vue'
 </script>
 
 <template>
