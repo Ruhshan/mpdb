@@ -5,11 +5,17 @@ const { guides } = useGuides()
 </script>
 
 <template>
-  <div>This is user guide</div>
-  <div v-for="guide in guides" :key="guide.id">
-    {{ guide }}
-    <br />
-  </div>
+  <v-container>
+    <v-card style="margin: 50px" v-for="guide in guides" :key="guide.id">
+      <v-card-title>{{ guide.id }}. {{ guide.text }}</v-card-title>
+      <v-card-item>
+        <v-img :src="guide.imageUrl"></v-img>
+      </v-card-item>
+      <div class="d-flex flex-row justify-center">
+        <p>{{ guide.imageCaption }}</p>
+      </div>
+    </v-card>
+  </v-container>
 </template>
 
 <style scoped></style>
