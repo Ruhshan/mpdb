@@ -48,12 +48,21 @@ describe('TopBar.vue', () => {
     expect(searchButton.text()).toBe('Search')
   })
 
-  it('renders the Guid button with text "Search"', () => {
+  it('renders the Guide button with text "Guide"', () => {
     const guideButton = wrapper.find('[data-testid="guide-button"]')
 
     expect(guideButton.exists()).toBe(true)
     expect(guideButton.text()).toBe('Guide')
 
     expect(findRouterLinkTo(guideButton)).toEqual({ name: 'guide' })
+  })
+
+  it('renders the Publications button with text "Publications"', () => {
+    const guideButton = wrapper.find('[data-testid="publications-button"]')
+
+    expect(guideButton.exists()).toBe(true)
+    expect(guideButton.text()).toBe('Publications')
+
+    expect(findRouterLinkTo(guideButton)).toEqual({ name: 'publications' })
   })
 })
