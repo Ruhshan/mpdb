@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const homeRoute = { name: 'home' }
 const guideRoute = { name: 'guide' }
-const publicationsRoute = {name: 'publications'}
+const publicationsRoute = { name: 'publications' }
 </script>
 
 <template>
@@ -18,7 +18,9 @@ const publicationsRoute = {name: 'publications'}
             <router-link :to="homeRoute" data-testid="home-button">Home</router-link>
             <router-link to="/#" data-testid="search-button">Search</router-link>
             <router-link :to="guideRoute" data-testid="guide-button">Guide</router-link>
-            <router-link :to="publicationsRoute" data-testid="publications-button">Publications</router-link>
+            <router-link :to="publicationsRoute" data-testid="publications-button"
+              >Publications</router-link
+            >
           </div>
         </v-col>
       </v-row>

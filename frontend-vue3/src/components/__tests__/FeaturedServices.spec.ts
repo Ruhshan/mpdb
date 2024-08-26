@@ -57,7 +57,6 @@ describe('FeaturedServices.vue', () => {
     services.forEach((service, index) => {
       const serviceItem = wrapper.findAll('.ico-box').at(index)!
 
-
       const icon = serviceItem.find('.v-icon-stub')
       expect(icon.exists()).toBe(true)
       expect(icon.text()).toBe(service.icon)
