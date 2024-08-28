@@ -8,7 +8,12 @@ const { citingPublications, releasePublications } = usePublications()
 <template>
   <section>
     <v-container>
-      <div class="apa-ref" v-for="publication in releasePublications" :key="publication.id">
+      <div
+        class="apa-ref"
+        v-for="publication in releasePublications"
+        :key="publication.id"
+        data-test-id="release-publications"
+      >
         <h4>{{ publication.heading }}</h4>
         <p>
           {{ publication.title }}
@@ -20,7 +25,11 @@ const { citingPublications, releasePublications } = usePublications()
 
       <div class="apa-ref">
         <h4>Articles Citing MPDB</h4>
-        <p v-for="publication in citingPublications" v-bind:key="publication.id">
+        <p
+          v-for="publication in citingPublications"
+          v-bind:key="publication.id"
+          data-test-id="citing-publications"
+        >
           {{ publication.id }}. {{ publication.title }}
           <em
             ><a :href="publication.link" target="_blank"> {{ publication.journal }}</a></em
